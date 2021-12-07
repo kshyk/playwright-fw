@@ -50,9 +50,6 @@ jobs:
         env:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-          
-      - name: Build project
-        run: npm run build
         
       - name: Install browsers
         run: npx playwright install --with-deps ${{ matrix.browser }} chromium
