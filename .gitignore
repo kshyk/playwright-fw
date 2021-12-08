@@ -142,3 +142,10 @@ dist
 
 # SvelteKit build / generate output
 .svelte-kit
+
+### Allure ###
+# Result files
+allure-results/
+
+# Report files
+allure-report/
