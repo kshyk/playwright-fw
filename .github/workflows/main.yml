@@ -53,7 +53,7 @@ jobs:
         run: npx playwright install --with-deps ${{ matrix.browser }} chromium
         
       - name: Run tests
-        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npx playwright test --project=${{ matrix.browser }} --output=allure-results/${{ matrix.os }}/${{ matrix.browser }}
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npx playwright test --project=${{ matrix.browser }} --output=./allure-results/${{ matrix.os }}/${{ matrix.browser }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
