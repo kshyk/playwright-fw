@@ -100,4 +100,4 @@ jobs:
           context: 'Test report'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha }}
-          target_url: https://kshyk.github.io/playwright-fw/allure-history/${{ github.run_number }}
+          target_url: kshyk.github.io/playwright-fw/${{ github.run_number }}
