@@ -85,16 +85,18 @@ jobs:
           keep_reports: 30
 
       - name: Deploy report to Github Pages
-        if: always()
         uses: peaceiris/actions-gh-pages@v3
+        if: always()
         with:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
 
       - name: Post the link to the report
-        if: always()
         uses: Sibz/github-status-action@v1
+        if: always()
         with: 
           authToken: ${{ secrets.GITHUB_TOKEN }}
           context: 'Test report'
