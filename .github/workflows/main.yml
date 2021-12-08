@@ -93,6 +93,7 @@ jobs:
           publish_dir: allure-history
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
+          force_orphan: true
 
       - name: Post the link to the report
         uses: Sibz/github-status-action@v1
