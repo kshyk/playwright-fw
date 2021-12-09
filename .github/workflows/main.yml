@@ -89,16 +89,16 @@ jobs:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - name: Install X11 server
+      - name: Install Mac packages
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           brew install --cask xquartz
-
-      - name: Install browsers
-        run: npx playwright install --with-deps ${{ matrix.browser }} chromium
+          npx playwright install --with-deps ${{ matrix.browser }} chromium
         
       - name: Run Playwright tests
-        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
+        run: |
+          Xvfb :99 -ac -screen 0 1366x768x24 &
+          npm test -- --project=${{ matrix.browser }}
 
       - name: Upload artifacts
         if: always()
