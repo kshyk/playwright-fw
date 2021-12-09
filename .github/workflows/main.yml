@@ -90,7 +90,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          # publish_dir: allure-history
+          publish_dir: allure-history
           # destination_dir: ./${{ matrix.os }}/${{ matrix.browser }}
           full_commit_message: ${{ github.event.head_commit.message }}
           user_name: 'github-actions[bot]'
