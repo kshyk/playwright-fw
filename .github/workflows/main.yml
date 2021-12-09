@@ -91,7 +91,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           # publish_dir: allure-history
-          destination_dir: ./${{ matrix.os }}/${{ matrix.browser }}
+          # destination_dir: ./${{ matrix.os }}/${{ matrix.browser }}
           full_commit_message: ${{ github.event.head_commit.message }}
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
@@ -106,4 +106,4 @@ jobs:
           description: 'Report is for ${{ matrix.os }} (${{ matrix.browser }})'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          target_url: https://kshyk.github.io/playwright-fw/${{ matrix.os }}/${{ matrix.browser }}/${{ github.run_number }}
+          target_url: kshyk.github.io/playwright-fw/${{ github.run_number }}
