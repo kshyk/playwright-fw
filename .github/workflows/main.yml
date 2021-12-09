@@ -89,6 +89,11 @@ jobs:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
+      - name: Install X11 server
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          brew install --cask xquartz
+
       - name: Install browsers
         run: npx playwright install --with-deps ${{ matrix.browser }} chromium
         
