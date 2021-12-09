@@ -9,7 +9,13 @@ const config: PlaywrightTestConfig = {
   },
   reporter: [
     ['list'],
-    ['allure-playwright']
+    ['html', {
+      open: 'never',
+      outputFolder: 'test-results'
+    }],
+    ['junit', {
+      outputFile: 'test-results/junit-results.xml'
+    }]
   ],
   projects: [
     {

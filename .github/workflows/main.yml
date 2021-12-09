@@ -52,58 +52,30 @@ jobs:
       - name: Install browsers
         run: npx playwright install --with-deps ${{ matrix.browser }} chromium
         
-      - name: Run tests
+      - name: Run Playwright tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
-
-      - name: List root dir
-        run: ls -la && ls -la allure-report && ls -la test-results
-
+        
       - name: Upload artifacts
+        if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: allure-report
-          path: allure-report
-          retention-days: 30
-        
-      - name: Get Allure history
-        uses: actions/checkout@v2
-        if: always()
-        continue-on-error: true
-        with:
-          ref: gh-pages
-          path: gh-pages
-    
-      - name: Allure Report with history
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        id: allure-report
-        with:
-          allure_results: allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-          keep_reports: 30
+          name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
+          path: test-results/junit-results.xml
 
-      - name: Deploy report to Github Pages
-        uses: peaceiris/actions-gh-pages@v3
+  publish-test-results:
+    name: "Publish Playwright test results"
+    needs: test_linux
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: allure-history
-          destination_dir: ${{ matrix.os }}/${{ matrix.browser }}
-          full_commit_message: ${{ github.event.head_commit.message }}
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          force_orphan: true
-
-      - name: Post the link to the report
-        uses: Sibz/github-status-action@v1
-        if: always()
-        with: 
-          authToken: ${{ secrets.GITHUB_TOKEN }}
-          context: 'Test report'
-          description: 'Report is for ${{ matrix.os }} (${{ matrix.browser }})'
-          state: 'success'
-          sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          target_url: https://kshyk.github.io/playwright-fw/${{ matrix.os }}/${{ matrix.browser }}/${{ github.run_number }}
+          files: artifacts/**/*.xml

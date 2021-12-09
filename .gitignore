@@ -133,6 +133,12 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# Report directories
+allure-results/
+allure-report/
+playwright-report/
+test-results/
+
 ### Node Patch ###
 # Serverless Webpack directories
 .webpack/
@@ -142,10 +148,3 @@ dist
 
 # SvelteKit build / generate output
 .svelte-kit
-
-### Allure ###
-# Result files
-allure-results/
-
-# Report files
-allure-report/
