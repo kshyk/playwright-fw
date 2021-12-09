@@ -106,4 +106,4 @@ jobs:
           description: 'Report is for ${{ matrix.os }} (${{ matrix.browser }})'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          target_url: kshyk.github.io/playwright-fw/${{ github.run_number }}
+          target_url: https://kshyk.github.io/playwright-fw/${{ github.run_number }}
