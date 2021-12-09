@@ -53,13 +53,13 @@ jobs:
         run: npx playwright install --with-deps ${{ matrix.browser }} chromium
         
       - name: Run tests
-        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npx playwright test --project=${{ matrix.browser }} --output=./allure-results/${{ matrix.os }}/${{ matrix.browser }}
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: allure-results-${{ matrix.os }}-${{ matrix.browser }}
-          path: allure-results/${{ matrix.os }}/${{ matrix.browser }}
+          path: allure-results
           retention-days: 30
         
       - name: Get Allure history
@@ -75,10 +75,10 @@ jobs:
         if: always()
         id: allure-report
         with:
-          allure_results: allure-results/${{ matrix.os }}/${{ matrix.browser }}
+          allure_results: allure-results
           gh_pages: gh-pages
-          allure_report: allure-report/${{ matrix.os }}/${{ matrix.browser }}
-          allure_history: allure-history/${{ matrix.os }}/${{ matrix.browser }}
+          allure_report: allure-report
+          allure_history: allure-history
           keep_reports: 30
 
       - name: Deploy report to Github Pages
@@ -87,7 +87,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history/${{ matrix.os }}/${{ matrix.browser }}
+          publish_dir: allure-history
+          destination_dir: ./${{ matrix.os }}/${{ matrix.browser }}
           full_commit_message: ${{ github.event.head_commit.message }}
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
@@ -102,4 +103,4 @@ jobs:
           description: 'Report is for ${{ matrix.os }} (${{ matrix.browser }})'
           state: 'success'
           sha: ${{ github.event.pull_request.head.sha || github.sha }}
-          target_url: https://kshyk.github.io/playwright-fw/${{ github.run_number }}
+          target_url: https://kshyk.github.io/playwright-fw/${{ matrix.os }}/${{ matrix.browser }}/${{ github.run_number }}
