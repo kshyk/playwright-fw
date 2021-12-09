@@ -56,13 +56,13 @@ jobs:
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
 
       - name: List root dir
-        run: ls -la
+        run: ls -la && ls -la allure-report && ls -la test-results
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: allure-results
-          path: allure-results
+          name: allure-report
+          path: allure-report
           retention-days: 30
         
       - name: Get Allure history
