@@ -55,6 +55,9 @@ jobs:
       - name: Run tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
 
+      - name: List root dir
+        run: ls -la
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
