@@ -89,7 +89,7 @@ jobs:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - name: Install Mac packages
+      - name: Install brew packages
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           brew install --cask xquartz
