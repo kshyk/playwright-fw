@@ -62,8 +62,8 @@ jobs:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
 
-  publish-test-results:
-    name: "Publish Playwright test results"
+  publish-linux-results:
+    name: "Publish Linux test results"
     needs: test_linux
     runs-on: ubuntu-latest
     if: always()
