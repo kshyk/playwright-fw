@@ -61,7 +61,7 @@ jobs:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
 
-  test_mac:
+  test_macos:
     name: ${{ matrix.os }} (${{ matrix.browser }})
     strategy:
       fail-fast: false
@@ -99,6 +99,46 @@ jobs:
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
+    
+  test_windows:
+    name: ${{ matrix.os }} (${{ matrix.browser }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest]
+        browser: [chromium, firefox, webkit]
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - name: Checkout ${{ github.repository }} repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps ${{ matrix.browser }} chromium
+        env:
+          DEBUG: pw:install
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1    
+        
+      - name: Run Playwright tests
+        run: npm test -- --project=${{ matrix.browser }}
+        shell: bash
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
+          path: test-results/junit-results.xml
 
   publish-linux-results:
     name: "Publish Linux test results"
@@ -120,8 +160,26 @@ jobs:
 
   publish-macos-results:
     name: "Publish MacOS test results"
-    needs: test_mac
+    needs: test_macos
     runs-on: macos-10.15
+    if: always()
+
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action/composite@v1
+        if: always()
+        with:
+          files: artifacts/**/*.xml
+
+  publish-windows-results:
+    name: "Publish Windows test results"
+    needs: test_windows
+    runs-on: windows-latest
     if: always()
 
     steps:
