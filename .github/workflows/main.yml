@@ -44,13 +44,12 @@ jobs:
             ${{ runner.os }}-
         
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npx playwright install --with-deps ${{ matrix.browser }} chromium
         env:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-        
-      - name: Install browsers
-        run: npx playwright install --with-deps ${{ matrix.browser }} chromium
         
       - name: Run Playwright tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
@@ -84,21 +83,15 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npx playwright install --with-deps ${{ matrix.browser }} chromium
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-
-      - name: Install brew packages
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install --cask xquartz
-          npx playwright install --with-deps ${{ matrix.browser }} chromium
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1    
         
       - name: Run Playwright tests
-        run: |
-          Xvfb :99 -ac -screen 0 1366x768x24 &
-          npm test -- --project=${{ matrix.browser }}
+        run: npm test -- --project=${{ matrix.browser }}
 
       - name: Upload artifacts
         if: always()
@@ -110,7 +103,7 @@ jobs:
   publish-linux-results:
     name: "Publish Linux test results"
     needs: test_linux
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     if: always()
 
     steps:
@@ -128,7 +121,7 @@ jobs:
   publish-macos-results:
     name: "Publish MacOS test results"
     needs: test_mac
-    runs-on: macos-11
+    runs-on: macos-10.15
     if: always()
 
     steps:
