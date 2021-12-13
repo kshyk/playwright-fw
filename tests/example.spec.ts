@@ -1,15 +1,39 @@
 import { test, expect } from '@playwright/test';
+import { PlaywrightDevPage } from '../pageobjects/playwright-dev-page';
 
-test.describe('home page', () => {
+test.describe('Intro page', () => {
     test.beforeEach(async ({ page }) => {
-        await page.goto('https://playwright.dev/');
-        await expect(page).toHaveTitle(/Playwright/);
+        const playwrightDev = new PlaywrightDevPage(page);
+        await playwrightDev.goto();
+        await playwrightDev.getStarted();
     });
 
-    test('introduction page should be displayed after click on get started button', async ({ page }) => {
-        const getStartedButton = page.locator('text=Get Started').first();
-        await expect(getStartedButton).toHaveAttribute('href', '/docs/intro');
-        await getStartedButton.click();
-        await expect(page.locator('text=Introduction').first()).toBeVisible();
+    test('Get Started table of contents', async ({ page }) => {
+        const playwrightDev = new PlaywrightDevPage(page);
+        await expect(playwrightDev.tocList).toHaveText([
+            'Installation',
+            'First test',
+            'Configuration file',
+            'Writing assertions',
+            'Using test fixtures',
+            'Using test hooks',
+            'Command line',
+            'Configure NPM scripts',
+            'Release notes',
+        ]);
+    });
+    
+    test('Get Started side menu table of contents',async ({ page }) => {
+        const playwrightDev = new PlaywrightDevPage(page);
+        await expect(playwrightDev.tocMenuList).toHaveText([
+            'Installation',
+            'First test',
+            'Configuration file',
+            'Writing assertions',
+            'Using test fixtures',
+            'Using test hooks',
+            'Command line',
+            'Configure NPM scripts'
+        ]);
     });
 });
