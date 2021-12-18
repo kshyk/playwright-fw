@@ -12,7 +12,10 @@ export class HomePage {
     }
 
     async goto() {
-        await this.page.goto('http://www.okruszek.org.pl');
+        await this.page.goto('http://www.okruszek.org.pl', {
+            waitUntil: 'load',
+            timeout: 0
+        });
     }
 
     async clickBread() {

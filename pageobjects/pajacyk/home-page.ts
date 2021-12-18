@@ -12,7 +12,10 @@ export class HomePage {
     }
 
     async goto() {
-        await this.page.goto('https://www.pajacyk.pl/#index');
+        await this.page.goto('https://www.pajacyk.pl/#index', {
+            waitUntil: 'load',
+            timeout: 0
+        });
     }
 
     async clickBelly() {
