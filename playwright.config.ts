@@ -31,6 +31,10 @@ const config: PlaywrightTestConfig = {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
+    {
+      name: 'msedge',
+      use: { ...devices['Desktop Edge'] },
+    },
   ],
 };
 export default config;
