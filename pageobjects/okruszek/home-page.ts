@@ -12,6 +12,7 @@ export class HomePage {
     }
 
     async goto() {
+        this.page.setDefaultNavigationTimeout(0);
         await this.page.goto('http://www.okruszek.org.pl', {
             waitUntil: 'load',
             timeout: 0

@@ -12,6 +12,7 @@ export class HomePage {
     }
 
     async goto() {
+        this.page.setDefaultNavigationTimeout(0);
         await this.page.goto('https://www.pajacyk.pl/#index', {
             waitUntil: 'load',
             timeout: 0
