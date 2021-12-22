@@ -15,7 +15,7 @@ test.describe('The Internet', () => {
     ['Basic Auth', '/basic_auth'],
     ['Digest Auth', '/digest_auth']
   ]);
-  authMap.forEach((endpoint: string, name: string) => {
+  authMap.forEach((name: string, endpoint: string) => {
     test(name, async ({ page }) => {
       page.setDefaultNavigationTimeout(0);
       await page.goto('https://the-internet.herokuapp.com'.concat(endpoint), {
@@ -40,7 +40,7 @@ test.describe('The Internet', () => {
       ['', password],
       [username.slice(0, -1), password]
     ]);
-    usernameCases.forEach(async (password: string, username: string) => {
+    usernameCases.forEach(async (username: string, password: string) => {
       await loginPage.login(username, password);
       await expect(flash.errorAlert).toContainText('Your username is invalid!');
     });
@@ -48,7 +48,7 @@ test.describe('The Internet', () => {
       ['', username],
       [password.slice(0, -1), username]
     ]);
-    passwordCases.forEach(async (username: string, password: string) => {
+    passwordCases.forEach(async (password: string, username: string) => {
       await loginPage.login(username, password);
       await expect(flash.errorAlert).toContainText('Your password is invalid!');
     });
