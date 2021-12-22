@@ -11,11 +11,11 @@ test.describe('The Internet', () => {
         }
     });
 
-    let authMap = new Map<string, string>([
+    const authMap = new Map<string, string>([
         ['Basic Auth', '/basic_auth'],
         ['Digest Auth', '/digest_auth']
     ]);
-    for (let [name, endpoint] of authMap) {
+    authMap.forEach((endpoint: string, name: string) => {
         test(name, async ({ page }) => {
             page.setDefaultNavigationTimeout(0);
             await page.goto('https://the-internet.herokuapp.com'.concat(endpoint), {
@@ -24,7 +24,7 @@ test.describe('The Internet', () => {
             });
             await expect(page.locator('text=Congratulations!')).toBeVisible();
         });
-    }
+    });
 
     test('Form Authentication', async ({ page }) => {
         page.setDefaultNavigationTimeout(0);
@@ -36,22 +36,22 @@ test.describe('The Internet', () => {
         const password = 'SuperSecretPassword!';
         const loginPage = new LoginPage(page);
         const flash = new FlashMessage(page);
-        let usernameCases = new Map<string, string>([
+        const usernameCases = new Map<string, string>([
             ['', password],
             [username.slice(0, -1), password]
         ]);
-        for (let [username, password] of usernameCases) {
+        usernameCases.forEach(async (password: string, username: string) => {
             await loginPage.login(username, password);
             await expect(flash.errorAlert).toContainText('Your username is invalid!');
-        }
-        let passwordCases = new Map<string, string>([
+        });
+        const passwordCases = new Map<string, string>([
             ['', username],
             [password.slice(0, -1), username]
         ]);
-        for (let [password, username] of passwordCases) {
+        passwordCases.forEach(async (username: string, password: string) => {
             await loginPage.login(username, password);
             await expect(flash.errorAlert).toContainText('Your password is invalid!');
-        }
+        });
         await loginPage.login(username, password);
         const securePage = new SecurePage(page);
         await expect(flash.successAlert).toContainText('You logged into a secure area!');

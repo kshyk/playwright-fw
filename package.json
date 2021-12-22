@@ -1,8 +1,15 @@
 {
   "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint-fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "test": "npx playwright test"
   },
   "devDependencies": {
-    "@playwright/test": "^1.17.1"
+    "@playwright/test": "^1.17.1",
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "typescript": "^4.5.4"
   }
 }
