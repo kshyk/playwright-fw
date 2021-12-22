@@ -2,10 +2,10 @@ name: E2E Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
-    
+    branches: [main]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,19 +30,7 @@ jobs:
         with:
           node-version: '14'
           cache: 'npm'
-      
-      - name: Cache Node.js modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-        
+
       - name: Install dependencies
         run: |
           npm ci
@@ -50,10 +38,10 @@ jobs:
         env:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-        
+
       - name: Run Playwright tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
-        
+
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v2
@@ -69,7 +57,7 @@ jobs:
         os: [macos-10.15, macos-11]
         browser: [chromium, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
-    
+
     steps:
       - name: Checkout ${{ github.repository }} repository
         uses: actions/checkout@v2
@@ -88,8 +76,8 @@ jobs:
           npx playwright install --with-deps ${{ matrix.browser }} chromium
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1    
-        
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
       - name: Run Playwright tests
         run: npm test -- --project=${{ matrix.browser }}
 
@@ -99,7 +87,7 @@ jobs:
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
-    
+
   test_windows:
     name: ${{ matrix.os }} (${{ matrix.browser }})
     strategy:
@@ -108,7 +96,7 @@ jobs:
         os: [windows-latest]
         browser: [chromium, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
-    
+
     steps:
       - name: Checkout ${{ github.repository }} repository
         uses: actions/checkout@v2
@@ -127,8 +115,8 @@ jobs:
           npx playwright install --with-deps ${{ matrix.browser }} chromium
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1    
-        
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+
       - name: Run Playwright tests
         run: npm test -- --project=${{ matrix.browser }}
         shell: bash
@@ -141,7 +129,7 @@ jobs:
           path: test-results/junit-results.xml
 
   publish-linux-results:
-    name: "Publish Linux test results"
+    name: Publish Linux test results
     needs: test_linux
     runs-on: ubuntu-18.04
     if: always()
@@ -159,7 +147,7 @@ jobs:
           files: artifacts/**/*.xml
 
   publish-macos-results:
-    name: "Publish MacOS test results"
+    name: Publish MacOS test results
     needs: test_macos
     runs-on: macos-10.15
     if: always()
@@ -177,7 +165,7 @@ jobs:
           files: artifacts/**/*.xml
 
   publish-windows-results:
-    name: "Publish Windows test results"
+    name: Publish Windows test results
     needs: test_windows
     runs-on: windows-latest
     if: always()
