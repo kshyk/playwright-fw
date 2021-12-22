@@ -39,6 +39,9 @@ jobs:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
+      - name: Make ESLint
+        run: npm run lint
+
       - name: Run Playwright tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
 
