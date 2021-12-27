@@ -13,6 +13,14 @@ export class LoginPage {
     this.loginButton = page.locator('button:has-text("Login")');
   }
 
+  async goto() {
+    this.page.setDefaultNavigationTimeout(0);
+    await this.page.goto('https://the-internet.herokuapp.com/login', {
+      waitUntil: 'load',
+      timeout: 0
+    });
+  }
+
   async login(username: string, password: string) {
     await this.usernameInput.type(username);
     await this.passwordInput.type(password);

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pageobjects/the-internet/login-page';
 import { SecurePage } from '../pageobjects/the-internet/secure-page';
+import { FileUpload } from '../pageobjects/the-internet/file-upload-page';
 import { FlashMessage } from '../pageobjects/the-internet/flash-message';
 
 test.describe('The Internet', () => {
@@ -27,14 +28,10 @@ test.describe('The Internet', () => {
   });
 
   test('Form Authentication', async ({ page }) => {
-    page.setDefaultNavigationTimeout(0);
-    await page.goto('https://the-internet.herokuapp.com/login', {
-      waitUntil: 'load',
-      timeout: 0
-    });
     const username = 'tomsmith';
     const password = 'SuperSecretPassword!';
     const loginPage = new LoginPage(page);
+    await loginPage.goto();
     const flash = new FlashMessage(page);
     const usernameCases = new Map<string, string>([
       ['', password],
@@ -63,7 +60,15 @@ test.describe('The Internet', () => {
     );
   });
 
+  test('File upload', async ({ page }) => {
+    const fileName = 'upload.me';
+    const uploadPage = new FileUpload(page);
+    await uploadPage.goto();
+    await uploadPage.uploadFile('./data/'.concat(fileName));
+    await expect(uploadPage.uploadSuccess).toContainText(fileName);
+  });
+
   test.afterEach(async ({ page }) => {
-    page.close();
+    await page.close();
   });
 });
