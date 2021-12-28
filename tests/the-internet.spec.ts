@@ -61,7 +61,7 @@ test.describe('The Internet', () => {
   });
 
   test('File upload', async ({ page }) => {
-    const fileName = 'upload.me';
+    const fileName = 'upload.txt';
     const uploadPage = new FileUpload(page);
     await uploadPage.goto();
     await uploadPage.uploadFile('./data/'.concat(fileName));
