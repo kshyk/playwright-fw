@@ -131,6 +131,7 @@ jobs:
 
       - name: Make ESLint
         run: npm run lint
+        shell: bash
 
       - name: Run Playwright tests
         run: npm test -- --project=${{ matrix.browser }}
