@@ -28,8 +28,8 @@ test.describe('The Internet', () => {
   });
 
   test('Form Authentication', async ({ page }) => {
-    const username = 'tomsmith';
-    const password = 'SuperSecretPassword!';
+    const username = process.env.USER_NAME;
+    const password = process.env.USER_PASSWORD;
     const loginPage = new LoginPage(page);
     await loginPage.goto();
     const flash = new FlashMessage(page);
