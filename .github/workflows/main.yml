@@ -129,10 +129,6 @@ jobs:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - name: Make ESLint
-        run: npm run lint
-        shell: bash
-
       - name: Run Playwright tests
         run: npm test -- --project=${{ matrix.browser }}
         shell: bash
