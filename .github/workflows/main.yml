@@ -44,6 +44,9 @@ jobs:
 
       - name: Run Playwright tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
       - name: Upload artifacts
         if: always()
@@ -81,8 +84,14 @@ jobs:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
+      - name: Make ESLint
+        run: npm run lint
+
       - name: Run Playwright tests
         run: npm test -- --project=${{ matrix.browser }}
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
       - name: Upload artifacts
         if: always()
@@ -120,9 +129,15 @@ jobs:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
+      - name: Make ESLint
+        run: npm run lint
+
       - name: Run Playwright tests
         run: npm test -- --project=${{ matrix.browser }}
         shell: bash
+        env:
+          USER_NAME: ${{ secrets.USER_NAME }}
+          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
       - name: Upload artifacts
         if: always()
