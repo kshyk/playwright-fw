@@ -9,8 +9,9 @@ export class SecurePage {
     this.logoutButton = page.locator("a[href='/logout']");
   }
 
-  async logout() {
+  async logout(): Promise<void> {
     await this.logoutButton.first().click();
     await expect(this.logoutButton).toBeHidden();
+    return;
   }
 }
