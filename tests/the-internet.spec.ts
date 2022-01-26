@@ -3,6 +3,8 @@ import { LoginPage } from '../pageobjects/the-internet/login-page';
 import { SecurePage } from '../pageobjects/the-internet/secure-page';
 import { FileUpload } from '../pageobjects/the-internet/file-upload-page';
 import { FlashMessage } from '../pageobjects/the-internet/flash-message';
+import { FileDownload } from '../pageobjects/the-internet/file-download-page';
+import fs from 'fs';
 
 test.describe('The Internet', () => {
   test.use({
@@ -60,12 +62,24 @@ test.describe('The Internet', () => {
     );
   });
 
-  test('File upload', async ({ page }) => {
-    const fileName = 'upload.txt';
+  test('File upload and download', async ({ page }) => {
+    const fileName = 'upload-me.txt';
     const uploadPage = new FileUpload(page);
     await uploadPage.goto();
-    await uploadPage.uploadFile('./data/'.concat(fileName));
+    const uploadPath = `./data/${fileName}`;
+    await uploadPage.uploadFile(uploadPath);
     await expect(uploadPage.uploadSuccess).toContainText(fileName);
+    const downloadPage = new FileDownload(page);
+    await downloadPage.goto();
+    const [download] = await Promise.all([
+      page.waitForEvent('download'),
+      page.click(`a[href='download/${fileName}']`)
+    ]);
+    const downloadPath = await download.path();
+    const actualFile = fs.readFileSync(downloadPath);
+    const expectedFile = fs.readFileSync(uploadPath);
+    expect(actualFile).toEqual(expectedFile);
+    expect(actualFile).toStrictEqual(expectedFile);
   });
 
   test.afterEach(async ({ page }) => {
