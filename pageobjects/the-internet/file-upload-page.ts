@@ -13,16 +13,18 @@ export class FileUpload {
     this.uploadSuccess = page.locator('#uploaded-files');
   }
 
-  async goto() {
+  async goto(): Promise<void> {
     this.page.setDefaultNavigationTimeout(0);
     await this.page.goto('https://the-internet.herokuapp.com/upload', {
       waitUntil: 'load',
       timeout: 0
     });
+    return;
   }
 
-  async uploadFile(path: string) {
+  async uploadFile(path: string): Promise<void> {
     await this.page.setInputFiles('#file-upload', path);
     await this.uploadButton.click();
+    return;
   }
 }
