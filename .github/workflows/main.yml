@@ -1,10 +1,12 @@
-name: E2E Tests
+name: Regression
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: '0 5 * * 6'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -13,7 +15,7 @@ env:
   USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
 
 jobs:
-  test_linux:
+  linux_os:
     name: ${{ matrix.os }} (${{ matrix.browser }})
     strategy:
       fail-fast: false
@@ -55,7 +57,7 @@ jobs:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
 
-  test_macos:
+  mac_os:
     name: ${{ matrix.os }} (${{ matrix.browser }})
     strategy:
       fail-fast: false
@@ -97,7 +99,7 @@ jobs:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
 
-  test_windows:
+  windows_os:
     name: ${{ matrix.os }} (${{ matrix.browser }})
     strategy:
       fail-fast: false
@@ -139,7 +141,7 @@ jobs:
 
   publish-linux-results:
     name: Publish Linux test results
-    needs: test_linux
+    needs: linux_os
     runs-on: ubuntu-18.04
     if: always()
 
@@ -157,7 +159,7 @@ jobs:
 
   publish-macos-results:
     name: Publish MacOS test results
-    needs: test_macos
+    needs: mac_os
     runs-on: macos-10.15
     if: always()
 
@@ -175,7 +177,7 @@ jobs:
 
   publish-windows-results:
     name: Publish Windows test results
-    needs: test_windows
+    needs: windows_os
     runs-on: windows-latest
     if: always()
 
