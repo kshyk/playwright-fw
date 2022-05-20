@@ -11,9 +11,9 @@
     }
   },
   "devDependencies": {
-    "@playwright/test": "^1.21.1",
-    "@typescript-eslint/eslint-plugin": "^5.23.0",
-    "@typescript-eslint/parser": "^5.23.0",
+    "@playwright/test": "^1.22.1",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
     "allure-commandline": "^2.17.2",
     "allure-playwright": "^2.0.0-beta.16",
     "eslint": "^8.15.0",
