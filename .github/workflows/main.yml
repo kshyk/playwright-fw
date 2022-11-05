@@ -20,7 +20,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-18.04, ubuntu-20.04]
+        os: [ubuntu-22.04]
         browser: [chromium, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
 
@@ -31,9 +31,9 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
           cache: 'npm'
 
       - name: Install dependencies
@@ -52,7 +52,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -62,7 +62,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-10.15, macos-11]
+        os: [macos-12]
         browser: [chromium, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
 
@@ -73,9 +73,9 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
           cache: 'npm'
 
       - name: Install dependencies
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -115,9 +115,9 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: '18'
           cache: 'npm'
 
       - name: Install dependencies
@@ -134,7 +134,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -142,12 +142,12 @@ jobs:
   publish-linux-results:
     name: Publish Linux test results
     needs: linux_os
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     if: always()
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: artifacts
 
@@ -160,12 +160,12 @@ jobs:
   publish-macos-results:
     name: Publish MacOS test results
     needs: mac_os
-    runs-on: macos-10.15
+    runs-on: macos-12
     if: always()
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: artifacts
 
@@ -183,12 +183,12 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           path: artifacts
 
       - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v1
+        uses: EnricoMi/publish-unit-test-result-action/composite@v2
         if: always()
         with:
           files: artifacts/**/*.xml
