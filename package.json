@@ -11,16 +11,16 @@
     }
   },
   "devDependencies": {
-    "@playwright/test": "^1.32.1",
-    "@typescript-eslint/eslint-plugin": "^5.56.0",
-    "@typescript-eslint/parser": "^5.57.0",
+    "@playwright/test": "^1.32.2",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "allure-commandline": "^2.21.0",
     "allure-playwright": "^2.1.0",
-    "eslint": "^8.36.0",
+    "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "prettier": "^2.8.7",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.4"
   }
 }
