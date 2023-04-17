@@ -13,7 +13,7 @@
   "devDependencies": {
     "@playwright/test": "^1.32.2",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
-    "@typescript-eslint/parser": "^5.57.1",
+    "@typescript-eslint/parser": "^5.58.0",
     "allure-commandline": "^2.21.0",
     "allure-playwright": "^2.1.0",
     "eslint": "^8.38.0",
