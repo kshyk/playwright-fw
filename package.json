@@ -12,15 +12,15 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.37.1",
-    "@typescript-eslint/eslint-plugin": "^6.4.1",
-    "@typescript-eslint/parser": "^5.60.0",
+    "@typescript-eslint/eslint-plugin": "^6.6.0",
+    "@typescript-eslint/parser": "^6.6.0",
     "allure-commandline": "^2.24.0",
-    "allure-playwright": "^2.6.0",
+    "allure-playwright": "^2.7.0",
     "eslint": "^8.48.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "husky": "^8.0.3",
-    "prettier": "^2.8.8",
-    "typescript": "^5.0.4"
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
   }
 }
