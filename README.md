@@ -4,10 +4,21 @@
 [![CodeQL](https://github.com/kshyk/playwright-fw/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kshyk/playwright-fw/actions/workflows/codeql-analysis.yml)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/6619a05ad9a648009a0e4c0e0a1809cb)](https://app.codacy.com/gh/kshyk/playwright-fw?utm_source=github.com&utm_medium=referral&utm_content=kshyk/playwright-fw&utm_campaign=Badge_Grade_Settings)
 
-[![forthebadge](https://forthebadge.com/images/badges/uses-badges.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/uses-git.svg)](https://forthebadge.com)
+## Tech Stack
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/images/badges/made-with-markdown.svg)](https://forthebadge.com)
+### Frameworks
 
-[![ForTheBadge powered-by-electricity](http://ForTheBadge.com/images/badges/powered-by-electricity.svg)](http://ForTheBadge.com)
+![Playwright](https://img.shields.io/badge/Playwright-45ba4b?style=for-the-badge&logo=Playwright&logoColor=white)
+
+### Languages
+
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
+
+### CI/CD
+
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+
+### Bots
+
+![Dependabot](https://img.shields.io/badge/dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)
