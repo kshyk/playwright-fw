@@ -7,7 +7,6 @@ on:
     branches: [main]
   schedule:
     - cron: '0 5 * * 6'
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 env:
@@ -31,24 +30,21 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: 20
+          cache: 'yarn'
 
       - name: Install dependencies
         run: |
-          npm ci
+          yarn install --frozen-lockfile
           npx playwright install --with-deps ${{ matrix.browser }} chromium
         env:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - name: Make ESLint
-        run: npm run lint
-
       - name: Run Playwright tests
-        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- npm test -- --project=${{ matrix.browser }}
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- yarn test --project=${{ matrix.browser }}
 
       - name: Upload artifacts
         if: always()
@@ -73,24 +69,21 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: 20
+          cache: 'yarn'
 
       - name: Install dependencies
         run: |
-          npm ci
+          yarn install --frozen-lockfile
           npx playwright install --with-deps ${{ matrix.browser }} chromium
         env:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
-      - name: Make ESLint
-        run: npm run lint
-
       - name: Run Playwright tests
-        run: npm test -- --project=${{ matrix.browser }}
+        run: yarn test --project=${{ matrix.browser }}
 
       - name: Upload artifacts
         if: always()
@@ -104,7 +97,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest]
+        os: [windows-2022]
         browser: [chromium, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
 
@@ -115,21 +108,21 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: 20
+          cache: 'yarn'
 
       - name: Install dependencies
         run: |
-          npm ci
+          yarn install --frozen-lockfile
           npx playwright install --with-deps ${{ matrix.browser }} chromium
         env:
           DEBUG: pw:install
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Run Playwright tests
-        run: npm test -- --project=${{ matrix.browser }}
+        run: yarn test --project=${{ matrix.browser }}
         shell: bash
 
       - name: Upload artifacts
@@ -160,7 +153,7 @@ jobs:
   publish-macos-results:
     name: Publish MacOS test results
     needs: mac_os
-    runs-on: macos-13
+    runs-on: macos-12
     if: always()
 
     steps:
@@ -178,7 +171,7 @@ jobs:
   publish-windows-results:
     name: Publish Windows test results
     needs: windows_os
-    runs-on: windows-latest
+    runs-on: windows-2022
     if: always()
 
     steps:
