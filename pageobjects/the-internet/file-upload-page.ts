@@ -1,15 +1,13 @@
 import { Locator, Page } from '@playwright/test';
 
 export class FileUpload {
-  readonly page: Page;
-  readonly uploadButton: Locator;
-  readonly dragDropArea: Locator;
+  private readonly page: Page;
+  private readonly uploadButton: Locator;
   readonly uploadSuccess: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.uploadButton = page.locator('#file-submit');
-    this.dragDropArea = page.locator('.dz-clickable#drag-drop-upload');
     this.uploadSuccess = page.locator('#uploaded-files');
   }
 
@@ -19,12 +17,10 @@ export class FileUpload {
       waitUntil: 'load',
       timeout: 0
     });
-    return;
   }
 
   async uploadFile(path: string): Promise<void> {
     await this.page.setInputFiles('#file-upload', path);
     await this.uploadButton.click();
-    return;
   }
 }
