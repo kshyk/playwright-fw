@@ -48,7 +48,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -58,7 +58,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-12]
+        os: [macos-13]
         browser: [chromium, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
 
@@ -87,7 +87,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -127,7 +127,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -140,7 +140,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
@@ -153,12 +153,12 @@ jobs:
   publish-macos-results:
     name: Publish MacOS test results
     needs: mac_os
-    runs-on: macos-12
+    runs-on: macos-13
     if: always()
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
@@ -176,7 +176,7 @@ jobs:
 
     steps:
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
