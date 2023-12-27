@@ -8,8 +8,4 @@ test.describe('Pajacyk', () => {
     await homePage.clickBelly();
     await expect(homePage.thanks).toBeVisible();
   });
-
-  test.afterEach(async ({ page }) => {
-    await page.close();
-  });
 });

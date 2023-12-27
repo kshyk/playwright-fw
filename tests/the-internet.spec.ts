@@ -81,8 +81,4 @@ test.describe('The Internet', () => {
     expect(actualFile).toEqual(expectedFile);
     expect(actualFile).toStrictEqual(expectedFile);
   });
-
-  test.afterEach(async ({ page }) => {
-    await page.close();
-  });
 });

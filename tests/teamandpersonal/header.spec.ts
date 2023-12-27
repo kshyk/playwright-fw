@@ -18,8 +18,4 @@ test.describe('Header', () => {
   test('Email address', async () => {
     await expect(header.mail).toContainText('biuro [at] teamandpersonal.pl');
   });
-
-  test.afterEach(async ({ page }) => {
-    await page.close();
-  });
 });
