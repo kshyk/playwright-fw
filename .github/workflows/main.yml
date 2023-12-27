@@ -41,7 +41,6 @@ jobs:
           npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Run Playwright tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- yarn test --project=${{ matrix.browser }}
@@ -80,7 +79,6 @@ jobs:
           npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Run Playwright tests
         run: yarn test --project=${{ matrix.browser }}
@@ -119,7 +117,6 @@ jobs:
           npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Run Playwright tests
         run: yarn test --project=${{ matrix.browser }}
