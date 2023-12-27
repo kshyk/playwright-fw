@@ -48,7 +48,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -87,7 +87,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
@@ -127,7 +127,7 @@ jobs:
 
       - name: Upload artifacts
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
           path: test-results/junit-results.xml
