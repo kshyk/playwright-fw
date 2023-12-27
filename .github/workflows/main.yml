@@ -20,8 +20,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04]
-        browser: [chromium, firefox, webkit, msedge]
+        browser: [chrome, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
 
     steps:
       - name: Checkout ${{ github.repository }} repository
@@ -58,8 +59,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-13]
-        browser: [chromium, firefox, webkit, msedge]
+        browser: [chrome, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
 
     steps:
       - name: Checkout ${{ github.repository }} repository
@@ -96,8 +98,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-2022]
-        browser: [chromium, firefox, webkit, msedge]
+        browser: [chrome, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
 
     steps:
       - name: Checkout ${{ github.repository }} repository
