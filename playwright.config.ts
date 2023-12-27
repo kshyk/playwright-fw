@@ -46,9 +46,15 @@ const config: PlaywrightTestConfig = {
       use: { ...devices['Desktop Safari'] },
       dependencies: ['setup']
     },
+    /* Test against branded browsers. */
+    {
+      name: 'chrome',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      dependencies: ['setup']
+    },
     {
       name: 'msedge',
-      use: { ...devices['Desktop Edge'] },
+      use: { ...devices['Desktop Edge'], channel: 'msedge' },
       dependencies: ['setup']
     }
   ]
