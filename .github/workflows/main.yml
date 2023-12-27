@@ -20,8 +20,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-22.04]
-        browser: [chromium, firefox, webkit, msedge]
+        browser: [chrome, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
 
     steps:
       - name: Checkout ${{ github.repository }} repository
@@ -38,10 +39,9 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-          npx playwright install --with-deps ${{ matrix.browser }} chromium
+          npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Run Playwright tests
         run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- yarn test --project=${{ matrix.browser }}
@@ -59,8 +59,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-13]
-        browser: [chromium, firefox, webkit, msedge]
+        browser: [chrome, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
 
     steps:
       - name: Checkout ${{ github.repository }} repository
@@ -77,10 +78,9 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-          npx playwright install --with-deps ${{ matrix.browser }} chromium
+          npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Run Playwright tests
         run: yarn test --project=${{ matrix.browser }}
@@ -98,8 +98,9 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-2022]
-        browser: [chromium, firefox, webkit, msedge]
+        browser: [chrome, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
 
     steps:
       - name: Checkout ${{ github.repository }} repository
@@ -116,10 +117,9 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install --frozen-lockfile
-          npx playwright install --with-deps ${{ matrix.browser }} chromium
+          npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
 
       - name: Run Playwright tests
         run: yarn test --project=${{ matrix.browser }}

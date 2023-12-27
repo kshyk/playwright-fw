@@ -11,15 +11,10 @@ test.describe('Header', () => {
     header = new Header(page);
   });
 
-  test('Phone number', async () => {
-    await expect(header.phone).toContainText('+48 660 22 77 22');
-  });
-
-  test('Email address', async () => {
-    await expect(header.mail).toContainText('biuro [at] teamandpersonal.pl');
-  });
-
-  test.afterEach(async ({ page }) => {
-    await page.close();
+  test('Phone number with e-mail address', async () => {
+    await expect.soft(header.phone).toContainText('+48 660 22 77 22');
+    await expect
+      .soft(header.mail)
+      .toContainText('biuro [at] teamandpersonal.pl');
   });
 });
