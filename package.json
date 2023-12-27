@@ -1,26 +1,41 @@
 {
+  "author": "Jakub Turkiewicz <jj.turkiewicz@gmail.com> (https://kshyk.github.io/portfolio/)",
+  "license": "MIT",
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint-fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "pretty": "prettier --config .prettierrc . --write",
     "test": "npx playwright test"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run pretty && npm run lint"
+      "pre-commit": "yarn pretty && yarn lint"
     }
   },
+  "keywords": [
+    "e2e",
+    "testing",
+    "playwright",
+    "eslint",
+    "prettier",
+    "typescript"
+  ],
   "devDependencies": {
     "@playwright/test": "^1.39.0",
-    "@typescript-eslint/eslint-plugin": "^6.8.0",
-    "@typescript-eslint/parser": "^6.8.0",
+    "@types/node": "^20.10.5",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
     "allure-commandline": "^2.24.1",
     "allure-playwright": "^2.9.2",
-    "eslint": "^8.51.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
     "husky": "^8.0.3",
-    "prettier": "^3.0.3",
-    "typescript": "^5.2.2"
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "update-browserslist-db": "^1.0.13"
   }
 }

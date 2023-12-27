@@ -10,6 +10,6 @@ test.describe('Pajacyk', () => {
   });
 
   test.afterEach(async ({ page }) => {
-    page.close();
+    await page.close();
   });
 });

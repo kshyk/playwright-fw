@@ -1,8 +1,8 @@
 import { Locator, Page } from '@playwright/test';
 
 export class HomePage {
-  readonly page: Page;
-  readonly bellyButton: Locator;
+  private readonly page: Page;
+  private readonly bellyButton: Locator;
   readonly thanks: Locator;
 
   constructor(page: Page) {
@@ -13,15 +13,13 @@ export class HomePage {
 
   async goto(): Promise<void> {
     this.page.setDefaultNavigationTimeout(0);
-    await this.page.goto('https://www.pajacyk.pl/#index', {
-      waitUntil: 'load',
-      timeout: 0
+    await this.page.goto('https://www.pajacyk.pl', {
+      waitUntil: 'domcontentloaded',
+      timeout: 10000
     });
-    return;
   }
 
   async clickBelly(): Promise<void> {
     await this.bellyButton.first().click();
-    return;
   }
 }

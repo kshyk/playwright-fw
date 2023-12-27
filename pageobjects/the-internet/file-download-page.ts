@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 
 export class FileDownload {
-  readonly page: Page;
+  private readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +13,5 @@ export class FileDownload {
       waitUntil: 'load',
       timeout: 0
     });
-    return;
   }
 }

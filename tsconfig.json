@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": "./node_modules",
+    "types": ["node"],
+    "target": "es6",
+    "esModuleInterop": true,
+    "noEmit": true
+  },
+  "include": ["**/*.*"]
+}
