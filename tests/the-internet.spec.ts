@@ -78,7 +78,7 @@ test.describe('The Internet', () => {
     const downloadPath = await download.path();
     const actualFile = fs.readFileSync(downloadPath);
     const expectedFile = fs.readFileSync(uploadPath);
-    expect(actualFile).toEqual(expectedFile);
-    expect(actualFile).toStrictEqual(expectedFile);
+    expect.soft(actualFile).toEqual(expectedFile);
+    expect.soft(actualFile).toStrictEqual(expectedFile);
   });
 });
