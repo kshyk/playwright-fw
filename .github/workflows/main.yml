@@ -145,7 +145,7 @@ jobs:
           path: artifacts
 
       - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action@v2
+        uses: EnricoMi/publish-unit-test-result-action/linux@v2
         if: always()
         with:
           files: artifacts/**/*.xml
@@ -163,7 +163,7 @@ jobs:
           path: artifacts
 
       - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        uses: EnricoMi/publish-unit-test-result-action/macos@v2
         if: always()
         with:
           files: artifacts/**/*.xml
@@ -181,7 +181,7 @@ jobs:
           path: artifacts
 
       - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action/composite@v2
+        uses: EnricoMi/publish-unit-test-result-action/windows@v2
         if: always()
         with:
           files: artifacts/**/*.xml
