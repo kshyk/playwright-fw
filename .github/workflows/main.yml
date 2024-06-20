@@ -2,11 +2,9 @@ name: Regression
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
-  schedule:
-    - cron: '0 5 * * 6'
+    branches: [ main ]
   workflow_dispatch:
 
 env:
@@ -19,8 +17,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04]
-        browser: [chrome, firefox, webkit, msedge]
+        os: [ ubuntu-22.04 ]
+        browser: [ chrome, firefox, webkit, msedge ]
+        shardIndex: [ 1, 2, 3 ]
+        shardTotal: [ 3 ]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
 
@@ -44,22 +44,23 @@ jobs:
           DEBUG: pw:install
 
       - name: Run Playwright tests
-        run: xvfb-run --auto-servernum --server-args="-screen 0 1366x768x24" -- yarn test --project=${{ matrix.browser }}
+        run: npx playwright test --project=${{ matrix.browser }} --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       - name: Upload artifacts
-        if: always()
+        if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
-          name: Test results for ${{ matrix.os }} (${{ matrix.browser }})
-          path: test-results/junit-results.xml
+          name: blob-report-${{ matrix.shardIndex }}
+          path: blob-report
+          retention-days: 1
 
   mac_os:
     name: ${{ matrix.os }} (${{ matrix.browser }})
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-13]
-        browser: [chrome, firefox, webkit, msedge]
+        os: [ macos-13 ]
+        browser: [ chrome, firefox, webkit, msedge ]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
 
@@ -97,8 +98,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2022]
-        browser: [chrome, firefox, webkit, msedge]
+        os: [ windows-2022 ]
+        browser: [ chrome, firefox, webkit, msedge ]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
 
@@ -136,19 +137,31 @@ jobs:
     name: Publish Linux test results
     needs: linux_os
     runs-on: ubuntu-22.04
-    if: always()
+    if: ${{ !cancelled() }}
 
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          path: artifacts
+          path: all-blob-reports
+          pattern: blob-report-*
+          merge-multiple: true
 
-      - name: Publish test results
-        uses: EnricoMi/publish-unit-test-result-action/linux@v2
-        if: always()
+      - name: Merge into HTML Report
+        run: npx playwright merge-reports --reporter html ./all-blob-reports
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
         with:
-          files: artifacts/**/*.xml
+          name: html-report--attempt-${{ github.run_attempt }}
+          path: playwright-report
+          retention-days: 30
 
   publish-macos-results:
     name: Publish MacOS test results

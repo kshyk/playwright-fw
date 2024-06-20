@@ -2,6 +2,8 @@
 
 [![Regression](https://github.com/kshyk/playwright-fw/actions/workflows/main.yml/badge.svg)](https://github.com/kshyk/playwright-fw/actions/workflows/main.yml)
 [![CodeQL](https://github.com/kshyk/playwright-fw/actions/workflows/codeql.yml/badge.svg)](https://github.com/kshyk/playwright-fw/actions/workflows/codeql.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kshyk_playwright-fw&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kshyk_playwright-fw)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=kshyk_playwright-fw&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=kshyk_playwright-fw)
 
 ## Tech Stack
 

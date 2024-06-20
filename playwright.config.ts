@@ -1,4 +1,5 @@
-import { PlaywrightTestConfig, devices } from '@playwright/test';
+import { devices, PlaywrightTestConfig } from '@playwright/test';
+import * as process from 'node:process';
 
 export {};
 
@@ -12,13 +13,12 @@ const config: PlaywrightTestConfig = {
   },
   reporter: [
     ['list'],
-    [
-      'html',
-      {
+    process.env.CI ?
+      ['blob'] : ['html', {
         open: 'never',
         outputFolder: 'test-results'
       }
-    ],
+      ],
     [
       'junit',
       {
