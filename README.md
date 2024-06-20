@@ -2,7 +2,6 @@
 
 [![Regression](https://github.com/kshyk/playwright-fw/actions/workflows/main.yml/badge.svg)](https://github.com/kshyk/playwright-fw/actions/workflows/main.yml)
 [![CodeQL](https://github.com/kshyk/playwright-fw/actions/workflows/codeql.yml/badge.svg)](https://github.com/kshyk/playwright-fw/actions/workflows/codeql.yml)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6619a05ad9a648009a0e4c0e0a1809cb)](https://app.codacy.com/gh/kshyk/playwright-fw?utm_source=github.com&utm_medium=referral&utm_content=kshyk/playwright-fw&utm_campaign=Badge_Grade_Settings)
 
 ## Tech Stack
 
