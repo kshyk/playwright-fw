@@ -4,13 +4,13 @@ import { SecurePage } from '../pageobjects/the-internet/secure-page';
 import { FileUpload } from '../pageobjects/the-internet/file-upload-page';
 import { FlashMessage } from '../pageobjects/the-internet/flash-message';
 import { FileDownload } from '../pageobjects/the-internet/file-download-page';
-import fs from 'fs';
+import * as fs from 'fs';
 
 test.describe('The Internet', () => {
   test.use({
     httpCredentials: {
       username: 'admin',
-      password: 'admin'
+      password: process.env.ADMIN_PASSWORD
     }
   });
 
