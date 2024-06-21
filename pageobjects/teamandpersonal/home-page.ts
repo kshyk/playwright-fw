@@ -1,17 +1,10 @@
 import { Page } from '@playwright/test';
 
-export class HomePage {
-  private readonly page: Page;
+export default class HomePage {
+  constructor(private readonly page: Page) {}
 
-  constructor(page: Page) {
-    this.page = page;
-  }
-
-  async goto(): Promise<void> {
-    this.page.setDefaultNavigationTimeout(0);
-    await this.page.goto('https://teamandpersonal.pl', {
-      waitUntil: 'load',
-      timeout: 0
-    });
-  }
+  goto = async () => {
+    await this.page.goto('https://teamandpersonal.pl');
+    return this;
+  };
 }

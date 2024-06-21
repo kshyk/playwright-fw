@@ -1,25 +1,22 @@
-import { Locator, Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 
-export class HomePage {
-  private readonly page: Page;
-  private readonly bellyButton: Locator;
-  readonly thanks: Locator;
+export default class HomePage {
+  constructor(
+    private readonly page: Page,
+    private readonly bellyButton = page.locator('.pajacyk__clickbox'),
+    private readonly thanks = page.locator('.pajacyk__thankyou')
+  ) {}
 
-  constructor(page: Page) {
-    this.page = page;
-    this.bellyButton = page.locator('.pajacyk__clickbox');
-    this.thanks = page.locator('.pajacyk__thankyou');
-  }
-
-  async goto(): Promise<void> {
+  goto = async () => {
     this.page.setDefaultNavigationTimeout(0);
     await this.page.goto('https://www.pajacyk.pl', {
       waitUntil: 'domcontentloaded',
       timeout: 10000
     });
-  }
+    return this;
+  };
 
-  async clickBelly(): Promise<void> {
-    await this.bellyButton.first().click();
-  }
+  clickBellyButton = async () => await this.bellyButton.first().click();
+
+  checkThanksMessage = async () => await expect(this.thanks).toBeVisible();
 }

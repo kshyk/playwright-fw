@@ -1,11 +1,15 @@
-import { Locator, Page } from '@playwright/test';
+import { expect, Page } from '@playwright/test';
 
-export class Header {
-  readonly phone: Locator;
-  readonly mail: Locator;
+export default class Header {
+  constructor(
+    readonly page: Page,
+    private readonly phone = page.locator('.topka-tel'),
+    private readonly mail = page.locator('.topka-mail')
+  ) {}
 
-  constructor(page: Page) {
-    this.phone = page.locator('.topka-tel');
-    this.mail = page.locator('.topka-mail');
-  }
+  checkPhoneNumber = async (number: string) =>
+    expect(this.phone).toContainText(number);
+
+  checkEmailAddress = async (email: string) =>
+    expect(this.mail).toContainText(email);
 }
