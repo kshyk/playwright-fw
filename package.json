@@ -5,6 +5,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "pretty": "prettier --config .prettierrc . --write",
+    "pretest": "yarn test-results:rm",
+    "test-results:rm": "rm -Rf test-results/* || true",
     "test": "npx playwright test"
   },
   "husky": {
