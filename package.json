@@ -2,12 +2,12 @@
   "author": "Jakub Turkiewicz <jj.turkiewicz@gmail.com> (https://kshyk.github.io/portfolio/)",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "pretty": "prettier --config .prettierrc . --write",
     "pretest": "yarn test-results:rm",
-    "test-results:rm": "rm -Rf test-results/* || true",
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test-results:rm": "rm -Rf test-results/* || true"
   },
   "husky": {
     "hooks": {
@@ -23,21 +23,25 @@
     "typescript"
   ],
   "devDependencies": {
-    "@playwright/test": "^1.44.1",
+    "@eslint/compat": "^1.1.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.9.1",
+    "@playwright/test": "^1.46.1",
     "@types/node": "^20.14.6",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "allure-commandline": "^2.29.0",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "allure-commandline": "^2.30.0",
     "allure-playwright": "^2.15.1",
-    "eslint": "^9.5.0",
+    "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-n": "^17.9.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "husky": "^9.0.11",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.2"
+    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "prettier": "^3.3.3",
+    "typescript": "^5.5.4"
   },
   "dependencies": {
-    "update-browserslist-db": "^1.0.16"
+    "update-browserslist-db": "^1.1.0"
   }
 }
