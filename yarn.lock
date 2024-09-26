@@ -231,26 +231,20 @@ allure-commandline@^2.30.0:
   resolved "https://registry.yarnpkg.com/allure-commandline/-/allure-commandline-2.30.0.tgz#c121021d263cad2474ec0fd7490de4d3c65a06f3"
   integrity sha512-qSaGG/I8P38q8gufnxvEog+IrIeCick+PJxxoTp5Vh/L8kviymIfv3A7fvYWziOqZ/oDywyOuNFMEfPZiiKwAA==
 
-allure-js-commons@2.15.1:
-  version "2.15.1"
-  resolved "https://registry.yarnpkg.com/allure-js-commons/-/allure-js-commons-2.15.1.tgz#570285472c80759017de699035218821fd12a7d3"
-  integrity sha512-5V/VINplbu0APnfSZOkYpKOzucO36Q2EtTD1kqjWjl7n6tj7Hh+IHCZsH3Vpk/LXRDfj9RuXugBBvwYKV5YMJw==
+allure-js-commons@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/allure-js-commons/-/allure-js-commons-3.0.2.tgz#65d49570a0073db5761c3f4bc3da5185644fa2c0"
+  integrity sha512-dVhuPi5rem4QIDcRpEtnaaClwL0cisoO3PZPEgUXIMML2WlVQ0+OZg17vrjiikJ/NF3Z/C461tyHpibNrBYD/g==
   dependencies:
     md5 "^2.3.0"
     properties "^1.2.1"
-    strip-ansi "^5.2.0"
 
-allure-playwright@^2.15.1:
-  version "2.15.1"
-  resolved "https://registry.yarnpkg.com/allure-playwright/-/allure-playwright-2.15.1.tgz#c94e716b368db48de50a5095717a908007c7d8ad"
-  integrity sha512-P1Uu1j/ptDHdYp3V5ZAeBZyt33+L+OQu0otUIEl/zkOcv0KRycHqlHwC0GEJmpgnLKvVP7s+K37LcLoSUUj3Cg==
+allure-playwright@^3.0.0:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/allure-playwright/-/allure-playwright-3.0.2.tgz#879965d5418e8a39dff3abd440dd940f668ce107"
+  integrity sha512-dijifwziaUlRM/aX7Jgb7gGfOk6l/o7+QITtOA1nQXl1buE9fKgWtpLpRvd0j/YjY81YWqN2U45fJHZyIcyp9Q==
   dependencies:
-    allure-js-commons "2.15.1"
-
-ansi-regex@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-4.1.1.tgz#164daac87ab2d6f6db3a29875e2d1766582dabed"
-  integrity sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==
+    allure-js-commons "3.0.2"
 
 ansi-regex@^5.0.1:
   version "5.0.1"
@@ -923,13 +917,6 @@ shebang-regex@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
-
-strip-ansi@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-5.2.0.tgz#8c9a536feb6afc962bdfa5b104a5091c1ad9c0ae"
-  integrity sha512-DuRs1gKbBqsMKIZlrffwlug8MHkcnpjs5VPmL1PAh+mA30U0DTotfDZ0d2UUsXpPmPmMMJ6W773MaA3J+lbiWA==
-  dependencies:
-    ansi-regex "^4.1.0"
 
 strip-ansi@^6.0.1:
   version "6.0.1"
