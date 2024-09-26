@@ -138,7 +138,7 @@ jobs:
   publish-linux-results:
     name: Publish Linux test results
     needs: linux_os
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: always()
 
     steps:
