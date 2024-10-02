@@ -231,20 +231,19 @@ allure-commandline@^2.30.0:
   resolved "https://registry.yarnpkg.com/allure-commandline/-/allure-commandline-2.30.0.tgz#c121021d263cad2474ec0fd7490de4d3c65a06f3"
   integrity sha512-qSaGG/I8P38q8gufnxvEog+IrIeCick+PJxxoTp5Vh/L8kviymIfv3A7fvYWziOqZ/oDywyOuNFMEfPZiiKwAA==
 
-allure-js-commons@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/allure-js-commons/-/allure-js-commons-3.0.3.tgz#c635adeecb02dd04849cc9e0b6d54bc66da9de8e"
-  integrity sha512-UKfMh+5hYM9mQHMcQoqwh5WZuCA8qDTbD8Fl69maYiC7vKMuBHh+GOyE3pChoqxjF2zGVcI7p3bOmkE7Sk8GVQ==
+allure-js-commons@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/allure-js-commons/-/allure-js-commons-3.0.4.tgz#4f497ffdcf46ad9b922cb587e6a76025a91e1d22"
+  integrity sha512-/UgTzpd7a16t8WpkA/25acmkk8xwwYUK3YDeVcZb1+3+7HHZRE943ZlKxUF/LCeLrZEFgYmOtma9xmaHagSddw==
   dependencies:
     md5 "^2.3.0"
-    properties "^1.2.1"
 
 allure-playwright@^3.0.0:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/allure-playwright/-/allure-playwright-3.0.3.tgz#5ba173f6ac302d06a48a3a9ae361305c27a34c60"
-  integrity sha512-c9ZDHPLx3P7d6PCQzMihT7DXDD2HcRFRwnH6/mtgP//7CW+caIBfpvyzY0o0lCSHl9qiCbAsAQgYKWlMG2PgTQ==
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/allure-playwright/-/allure-playwright-3.0.4.tgz#d0484a39a8b500dc118ff12da50423a55d54bdfc"
+  integrity sha512-P2QBUZfEtqof3PLonVXcO2BdaYmWKGRDy4Ehl4dcAGsXdfS5QdrNat+DmR5BMxBNQgvf1805fGBeZh2Zn0gagQ==
   dependencies:
-    allure-js-commons "3.0.3"
+    allure-js-commons "3.0.4"
 
 ansi-regex@^5.0.1:
   version "5.0.1"
@@ -863,11 +862,6 @@ prettier@^3.3.3:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.3.3.tgz#30c54fe0be0d8d12e6ae61dbb10109ea00d53105"
   integrity sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==
-
-properties@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/properties/-/properties-1.2.1.tgz#0ee97a7fc020b1a2a55b8659eda4aa8d869094bd"
-  integrity sha512-qYNxyMj1JeW54i/EWEFsM1cVwxJbtgPp8+0Wg9XjNaK6VE/c4oRi6PNu5p7w1mNXEIQIjV5Wwn8v8Gz82/QzdQ==
 
 punycode@^2.1.0:
   version "2.3.1"
