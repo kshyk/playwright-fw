@@ -248,9 +248,9 @@ ajv@^6.12.4:
     uri-js "^4.2.2"
 
 allure-commandline@^2.30.0:
-  version "2.32.0"
-  resolved "https://registry.yarnpkg.com/allure-commandline/-/allure-commandline-2.32.0.tgz#59826c454756563776658a829cf9732063413d71"
-  integrity sha512-W03ors+ks8uy0SgQILHQvtvR0iadAfDYmTFC3p8Pk4pi8KXUW1cF+z8FN2+7deH3FE2cuYgjhhA+CdLdJfzOMQ==
+  version "2.32.2"
+  resolved "https://registry.yarnpkg.com/allure-commandline/-/allure-commandline-2.32.2.tgz#dfdfde73c2791eb95739aa361594dbd2e01c4df8"
+  integrity sha512-+O+a4laukvO/jqWLV/PenQo4an9igZgo+TuAX10D+Do4K03EPyCcmxCel/EXp8NUMb3ExErrrozyX/0o6I8qbA==
 
 allure-js-commons@3.1.0:
   version "3.1.0"
