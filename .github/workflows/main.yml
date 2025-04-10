@@ -174,7 +174,7 @@ jobs:
   publish-windows-results:
     name: Publish Windows test results
     needs: windows_os
-    runs-on: windows-2022
+    runs-on: windows-2025
     if: always()
 
     steps:
