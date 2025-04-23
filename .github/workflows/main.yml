@@ -37,11 +37,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
 
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
           npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
@@ -76,11 +75,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
 
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
           npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
@@ -115,11 +113,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'yarn'
 
       - name: Install dependencies
         run: |
-          yarn install --frozen-lockfile
+          yarn install --immutable
           npx playwright install --with-deps ${{ matrix.browser }}
         env:
           DEBUG: pw:install
