@@ -490,28 +490,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:3.4.5":
-  version: 3.4.5
-  resolution: "allure-js-commons@npm:3.4.5"
+"allure-js-commons@npm:3.5.0":
+  version: 3.5.0
+  resolution: "allure-js-commons@npm:3.5.0"
   dependencies:
     md5: "npm:^2.3.0"
   peerDependencies:
-    allure-playwright: 3.4.5
+    allure-playwright: 3.5.0
   peerDependenciesMeta:
     allure-playwright:
       optional: true
-  checksum: 10c0/514cff0c7c45350492ac2b03c1012ec7427968aa48af6362cc8b2c0138a94054f1e03ea82a5ad1bc68ce8f06780fb716a67dc76b81f28a14a0b21a4a712a2d6a
+  checksum: 10c0/8fba36778dcaeda142701b0ce75b12333c23f6baf595386779d73bc8199c31a2c7d805bb38d22be7821e009727bfa6c2b313466e979f76834e1ffd0e3ebc4f7f
   languageName: node
   linkType: hard
 
 "allure-playwright@npm:^3.0.0":
-  version: 3.4.5
-  resolution: "allure-playwright@npm:3.4.5"
+  version: 3.5.0
+  resolution: "allure-playwright@npm:3.5.0"
   dependencies:
-    allure-js-commons: "npm:3.4.5"
+    allure-js-commons: "npm:3.5.0"
   peerDependencies:
     "@playwright/test": ">=1.53.0"
-  checksum: 10c0/3f3c1e879e7ab3cfff20dc018455bd93b748db4ff9ec90f50fb8aeb0248f3d6352b9974a9b49c937798318bc87cfbd52bf5cd0241ed1bc027151580eba635b74
+  checksum: 10c0/e095b66e119a7cd6b339d1f96d528e243799076831f1a6b6c89fac658b04a62e78f91fdc36b3c0f333662c5eafe0350288e366b5173b6f610a572d32f6864037
   languageName: node
   linkType: hard
 
