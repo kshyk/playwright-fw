@@ -39,7 +39,7 @@
     "globals": "^17.0.0",
     "husky": "^9.1.5",
     "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "typescript": "^6.0.0"
   },
   "dependencies": {
     "update-browserslist-db": "^1.1.0"
