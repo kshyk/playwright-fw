@@ -60,7 +60,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-15]
+        os: [macos-26]
         browser: [chrome, firefox, webkit, msedge]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
