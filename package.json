@@ -34,12 +34,12 @@
     "allure-playwright": "^3.0.0",
     "eslint": "^10.0.0",
     "eslint-config-prettier": "^10.0.0",
-    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-n": "^18.0.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^17.0.0",
     "husky": "^9.1.5",
     "prettier": "^3.3.3",
-    "typescript": "^5.5.4"
+    "typescript": "^6.0.0"
   },
   "dependencies": {
     "update-browserslist-db": "^1.1.0"
