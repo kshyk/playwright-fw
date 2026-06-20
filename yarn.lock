@@ -482,11 +482,11 @@ __metadata:
   linkType: hard
 
 "allure-commandline@npm:^2.30.0":
-  version: 2.42.1
-  resolution: "allure-commandline@npm:2.42.1"
+  version: 2.43.0
+  resolution: "allure-commandline@npm:2.43.0"
   bin:
     allure: bin/allure
-  checksum: 10c0/38119d74da6ff5f80df375dbf874a403ccd67d4f4d302c05846f2216d2f848e8afb86ff9165b7cb54539cb83d9447bed245fb4eb359e2d97e4947533f1e1b5fb
+  checksum: 10c0/d06d5a193366a67ca2ea9ecbe5c33cbba8c25fd0ee6a85915beb4b514b9ad87013f275e066bbeaccddf0a406857719fba10140cf6a4ad7e4204d524f2a223bd6
   languageName: node
   linkType: hard
 
