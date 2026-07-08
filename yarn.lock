@@ -813,8 +813,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-n@npm:^18.0.0":
-  version: 18.2.0
-  resolution: "eslint-plugin-n@npm:18.2.0"
+  version: 18.2.1
+  resolution: "eslint-plugin-n@npm:18.2.1"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.5.0"
     enhanced-resolve: "npm:^5.17.1"
@@ -833,7 +833,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/7d55896d669a5147270a3366da36decc7e3c8ff35245c1da23966353ff82881d7d6cf592ba16e40b7eeb6765a901d114a01bb100138753c20eb34fa5c3891238
+  checksum: 10c0/cb2087fd6e1193b180583dbb8bef6a61458d3de2769891cb5eb265f89986ca64eada323fe7fefa1d7b911420ea016d55a8ab94fa3d36f6b3814abe79718711ee
   languageName: node
   linkType: hard
 
